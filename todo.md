@@ -7,6 +7,6 @@
 - [x] WasRunで文字列をログに記録する
 - [x] 失敗したテストを出力する
 - [x] setUpのエラーをキャッチしたらerrorCountをインクリメントする
-- [ ] setUpのエラーをキャッチして出力する
+- [x] setUpのエラーをキャッチして出力する
 - [ ] TestCaseクラスからTestSuiteを作る
 
