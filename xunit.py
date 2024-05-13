@@ -87,12 +87,18 @@ class TestCaseTest(TestCase):
         suite.run(self.result)
         assert("2 run, 1 failed" == self.result.summary())
 
+    def testFailedSetup(self):
+        test = SetupFailed("testMethod")
+        test.run(self.result)
+        assert(1 == self.result.errorCount)
+
 suite = TestSuite()
 suite.add(TestCaseTest("testTemplateMethod"))
 suite.add(TestCaseTest("testResult"))
 suite.add(TestCaseTest("testFailedResult"))
 suite.add(TestCaseTest("testFailedResultFormatting"))
 suite.add(TestCaseTest("testSuite"))
+suite.add(TestCaseTest("testFailedSetup"))
 result = TestResult()
 suite.run(result)
 print(result.summary())
