@@ -116,6 +116,10 @@ class TestCaseTest(TestCase):
         diff = set(subclass_method_names) - set(testcase_method_names)
         assert({'testBrokenMethod', 'testMethod'} == diff)
 
+    def testPassClassToConstructor(self):
+        test = TestSuite(WasRun)
+        assert(2 == len(test.tests))
+
 suite = TestSuite()
 suite.add(TestCaseTest("testTemplateMethod"))
 suite.add(TestCaseTest("testResult"))
@@ -126,6 +130,7 @@ suite.add(TestCaseTest("testFailedSetupResult"))
 suite.add(TestCaseTest("testFailedLog"))
 #suite.add(TestCaseTest("testSuiteFromTestCase"))
 suite.add(TestCaseTest("testChildMethods"))
+suite.add(TestCaseTest("testPassClassToConstructor"))
 result = TestResult()
 suite.run(result)
 print(result.summary())
