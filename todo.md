@@ -8,5 +8,5 @@
 - [x] 失敗したテストを出力する
 - [x] setUpのエラーをキャッチしたらerrorCountをインクリメントする
 - [x] setUpのエラーをキャッチして出力する
-- [ ] TestCaseクラスからTestSuiteを作る
+- [x] TestCaseクラスからTestSuiteを作る
 
