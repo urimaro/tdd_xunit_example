@@ -33,8 +33,17 @@ class TestCase:
         self.tearDown()
 
 class TestSuite:
-    def __init__(self):
+    def __init__(self, clazz = None):
         self.tests = []
+
+        if clazz:
+            for name in self.testMethodNames(clazz):
+                self.tests.append(clazz(name))
+
+    def testMethodNames(self, clazz):
+        subclass_method_names = dir(clazz)
+        testcase_method_names = dir(TestCase)
+        return set(subclass_method_names) - set(testcase_method_names)
 
     def add(self, test):
         self.tests.append(test)
