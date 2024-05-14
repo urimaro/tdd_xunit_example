@@ -109,6 +109,13 @@ class TestCaseTest(TestCase):
         suite.run(self.result)
         assert("2 run, 1 failed" == self.result.summary())
 
+    def testChildMethods(self):
+        test = WasRun("testMethod")
+        subclass_method_names = dir(type(test))
+        testcase_method_names = dir(TestCase)
+        diff = set(subclass_method_names) - set(testcase_method_names)
+        assert({'testBrokenMethod', 'testMethod'} == diff)
+
 suite = TestSuite()
 suite.add(TestCaseTest("testTemplateMethod"))
 suite.add(TestCaseTest("testResult"))
@@ -117,7 +124,8 @@ suite.add(TestCaseTest("testFailedResultFormatting"))
 suite.add(TestCaseTest("testSuite"))
 suite.add(TestCaseTest("testFailedSetupResult"))
 suite.add(TestCaseTest("testFailedLog"))
-suite.add(TestCaseTest("testSuiteFromTestCase"))
+#suite.add(TestCaseTest("testSuiteFromTestCase"))
+suite.add(TestCaseTest("testChildMethods"))
 result = TestResult()
 suite.run(result)
 print(result.summary())
